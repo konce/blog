@@ -1,12 +1,260 @@
 /* inspired by http://yihui.name/cn/ */
-*{padding:0;margin:0;}
-body{width:600px;margin:2em auto;padding:0 2em;font-size:14px;font-family:"Microsoft YaHei";}
-p{line-height:24px;margin:1em 0;}
-header{padding:.5em 0;border-bottom:1px solid #cccccc;}
-nav{float:left;font-family:"Microsoft YaHei";font-size:1.1em;text-transform:uppercase;margin-left:-12em;width:9em;text-align:right;}
-nav a{display:block;text-decoration:none;padding:.7em 1em;color:#000000;}
-nav a:hover{background-color:#ff0000;color:#f9f9f9;-webkit-transition:color .2s linear;}
-article{font-size:16px;padding-top:.5em;}
-article a{color:#dd0000;text-decoration:none;}
-article a:hover{color:#333333;text-decoration:underline;}
+/* Reset */
+/**
+ ** html5doctor.com Reset Stylesheet v1.6.1 (http://html5doctor.com/html-5-reset-stylesheet/)
+ ** Richard Clark (http://richclarkdesign.com)
+ ** http://cssreset.com
+ **/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #787878;
+    font-weight: 400;
+    line-height: 1em;
+    margin: 0 0 1em 0;
+}
+h1 {
+    font-size: 2em;
+    line-height: 1.5em;
+}
+
+h2 {
+    font-size: 1.5em;
+    line-height: 1.5em;
+}
+
+h3 {
+    font-size: 1.25em;
+    line-height: 1.5em;
+}
+
+h4 {
+    font-size: 1.1em;
+    line-height: 1.5em;
+}
+
+h5 {
+    font-size: 0.9em;
+    line-height: 1.5em;
+}
+
+h6 {
+    font-size: 0.7em;
+    line-height: 1.5em;
+}
+body {
+    line-height:1;
+}
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    display:block;
+}
+nav ul {
+    list-style:none;
+}
+blockquote, q {
+    quotes:none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+}
+del {
+    text-decoration: line-through;
+}
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:2px;
+    border:0;
+    border-top:2px solid #efefef;
+    margin:3em 0;
+    padding:0;
+}
+input, select {
+    vertical-align:middle;
+}
+
+blockquote {
+    border-left: solid 6px #efefef;
+    margin: 0 0 2em 0;
+    padding: 0.5em 0 0.5em 1.5em;
+    line-height: 24px;
+    margin: 1em 0;
+}
+body{
+    margin:0 auto;
+    color: #a2a2a2;
+    font-size:14px;
+    background-color: #fafafa;
+    font-family: 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', tahoma, sans-serif;
+}
+p{
+    line-height:24px;
+    margin:1em 0;
+}
+header{
+    padding:.5em 0;
+    border-bottom:1px solid #cccccc;
+}
+nav{
+    font-size:1.1em;
+    text-transform:uppercase;
+    text-align:right;
+}
+nav a{
+    display:block;
+    text-decoration:none;
+    padding:.7em 1em;
+    color:#a2a2a2;
+}
+nav a:hover{
+    color:#f9f9f9;
+    -webkit-transition:color .2s linear;
+}
+article{
+    margin-left: 35%;
+    max-width: 54em;
+    font-size:16px;
+    padding-top:.5em;
+}
+article a{
+    color:#666;
+    text-decoration:none;
+}
+article a:hover{
+    color:#f14e42;
+    -webkit-transition:color .2s linear;
+}
 .info{font-size:14px;}
+.edit{margin:3px;padding:2px 5px;border-radius:3px;background-color:#f3f3f3;color:#333;font-size:13px;}
+.edit:hover{text-decoration:none;background-color:#f00;color:#fff;-webkit-transition:color .2s linear;}
+
+
+/* Header */
+#header {
+    background-color: #1f1815;
+    background-attachment: scroll, fixed;
+    background-image: url("img/overlay.png"), url("img/bg.jpg");
+    background-position: top left, top left;
+    background-repeat: repeat, no-repeat;
+    background-size: auto, auto 100%;
+    color: rgba(255, 255, 255, 0.5);
+    height: 100%;
+    left: 0;
+    /* padding: 8em 4em 0 0; */
+    position: fixed;
+    text-align: right;
+    top: 0;
+    width: 35%;
+}
+#header .wrapper {
+    padding: 8em 4em 0 0;
+}
+#header .wrapper {
+    padding: 8em 4em 0 0;
+}
+#header .wrapper a {
+    color:#a2a2a2;
+    text-decoration: none;
+}
+#header .wrapper a:hover{
+    color:#f9f9f9;
+    -webkit-transition:color .2s linear;
+}
+#header .icons {
+    padding-top: 2em;
+    padding-left: 0;
+}
+#header .icons li {
+    display: inline-block;
+    padding: 0 1em 0 0;
+    font-size: 16px;
+}
+#header .icon > .label {
+    display: none;
+}
+#header .icons li a {
+    color: rgba(255, 255, 255, 0.4);
+}
+#header .image.avatar {
+    margin: 0 0 1em 0;
+    width: 2em;
+}
+#header .avatar img{
+    border-radius: 100%;
+    width: 100px;
+    margin-bottom: 1em;
+}
+#header strong, #header b {
+    color: #ffffff;
+}
+
+#header h2, #header h3, #header h4, #header h5, #header h6 {
+    color: #ffffff;
+}
+
+#header h1 {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.35em;
+    line-height: 1.75em;
+    margin: 0;
+}
+
+/* Main */
+#main {
+    margin-left: 35%;
+    max-width: 54em;
+    /* padding: 8em 4em 4em 4em; */
+    width: 65%;
+}
+#main .wrapper {
+    padding: 8em 4em 4em 4em;
+}

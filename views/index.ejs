@@ -1,10 +1,16 @@
 <%- include header %>
 <% posts.forEach(function (post, index) { %>
-    <p><h2><a href="#"><%= post.title %></a></h2></p>
+    <h2 class="major">
+        <a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">
+            <%= post.title %>
+        </a>
+    </h2>
     <p class="info">
-        作者：<a href="#"><%= post.name %></a> | 
-        日期：<%= post.time.minute %>
+        <%= post.time.day %>  晴
     </p>
-    <p><%- post.post %></p>
+    <blockquote>
+        <%- post.summary %>
+    </blockquote>
+    <hr >
 <% }) %>
 <%- include footer %>

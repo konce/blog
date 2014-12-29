@@ -24,7 +24,6 @@ module.exports = function(app) {
                 req.flash('error', '用户不存在');
                 return res.redirect('/login');
             }
-                console.log('ini');
             if (user.password != password) {
                 req.flash('error', '密码错误');
                 return res.redirect('/login');

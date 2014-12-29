@@ -1,4 +1,6 @@
-var Helper = require('../helper/RouterHelper');
+var Helper = require('../helper/RouterHelper'),
+    User = require('../model/user.js'),
+    crypto = require('crypto');
 
 module.exports = function(app) {
     app.get('/signup', Helper.checkNotLogin);

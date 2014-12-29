@@ -1,32 +1,45 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
     <head>
+        <title>Wait for someone's coffee</title>
         <meta charset="UTF-8" />
-        <title>Blog</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <link rel='stylesheet' href='/stylesheets/fa/css/font-awesome.min.css' />
         <link rel="stylesheet" href="/stylesheets/style.css">
     </head>
-    <body>
+    <body id="top">
+        <!-- Header -->
+        <header id="header">
+                <div class="wrapper">
+                    <a href="/" class="image avatar">
+                        <img src="/images/rise.png" alt="my pic" />
+                    </a>
+                    <h4 class="title">FrontEnd Web Developer</h4>
+                    <nav>
+                    <span><a title="主页" href="/">首页</a></span>
+                    <span><a title="关于" href="/">关于我</a></span>
+                    <% if (user) { %>
+                        <span><a title="上传" href="/upload">上传</a></span>
+                        <span><a title="发表" href="/post">发表</a></span>
+                        <span><a title="登出" href="/logout">退出</a></span>
+                    <% } %>
+                    </nav>
+                    <ul class="icons">
+                        <li><a href="https://twitter.com/kxj0206" class="icon fa fa-twitter"><span class="label">Twitter</span></a></li>
+                        <li><a href="https://github.com/konce" class="icon fa fa-github"><span class="label">Github</span></a></li>
+                        <li><a href="#" class="icon fa fa-dribbble"><span class="label">Dribbble</span></a></li>
+                        <li><a href="mailto:kxj0206@gmail.com" class="icon fa fa-envelope-o"><span class="label">Email</span></a></li>
+                    </ul>
+                </div>
+            </header>
 
-        <header>
-        <h1><%= title %></h1>
-        </header>
-
-        <nav>
-        <span><a title="主页" href="/">home</a></span>
-        <% if (user) { %>
-            <span><a title="上传" href="/upload">upload</a></span>
-            <span><a title="发表" href="/post">post</a></span>
-            <span><a title="登出" href="/logout">logout</a></span>
-        <% } else { %>
-            <span><a title="登录" href="/login">login</a></span>
-            <span><a title="注册" href="/signup">register</a></span>
-        <% } %>
-        </nav>
-
-        <article>
-        <% if (success) { %>
-            <div><%= success %></div>
-        <% } %>
-        <% if (error) { %>
-            <div><%= error %> </div>
-        <% } %>
+        <article id="main">
+            <div class="wrapper">
+                <% if (success) { %>
+                    <div><%= success %></div>
+                <% } %>
+                <% if (error) { %>
+                    <div><%= error %> </div>
+                <% } %>
