@@ -1,11 +1,13 @@
 var mongodb = require('./db'),
     markdown = require('markdown').markdown;
 
-function Post(name, title, post, summary) {
+function Post(name, title, post, tags, summary) {
     this.name = name;
     this.title = title;
     this.post = post;
+    this.tags = tags.trim().split(',');
     this.summary = summary;
+    console.log(tags.trim());
 }
 
 module.exports = Post;
@@ -26,6 +28,7 @@ Post.prototype.save = function (callback) {
         name: this.name,
         time: time,
         title: this.title,
+        tags: this.tags,
         post: this.post,
         summary: this.summary
     };
@@ -112,7 +115,6 @@ Post.getOne = function(name, day, title, callback) {
                 if (err) {
                     return callback(err);
                 }
-                console.log(doc);
                 //解析 markdown 为 html
                 doc.post = markdown.toHTML(doc.post);
                 callback(null, doc);//返回查询的一篇文章
@@ -186,6 +188,60 @@ Post.remove = function (name, day, title, callback) {
                 mongodb.close();
                 if (err)  return callback(err);
                 callback(null);
+            });
+        });
+    });
+};
+
+// 获取一篇文章
+Post.getTags = function(callback) {
+    mongodb.open(function (err, db) {
+        if (err) {
+            return callback(err);
+        }
+        db.collection('posts', function (err, collection) {
+            if (err) {
+                mongodb.close();
+                return callback(err);
+            }
+            collection.distinct("tags", function (err, docs) {
+                mongodb.close();
+                if (err) {
+                    return callback(err);
+                }
+                console.log(docs);
+                callback(null, docs);
+            });
+        });
+    });
+};
+
+//返回含有特定标签的所有文章
+Post.getTag = function(tag, callback) {
+    mongodb.open(function (err, db) {
+        if (err) {
+            return callback(err);
+        }
+        db.collection('posts', function (err, collection) {
+            if (err) {
+                mongodb.close();
+                return callback(err);
+            }
+
+            collection.find({
+                "tags": tag
+            }, {
+                "name": 1,
+                "time": 1,
+                "title": 1
+            }).sort({
+                time: -1
+            }).toArray(function (err, docs) {
+                mongodb.close();
+                if (err) {
+                    return callback(err);
+                }
+                callback(null, docs);
             });
         });
     });

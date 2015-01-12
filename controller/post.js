@@ -15,7 +15,7 @@ module.exports = function(app) {
     app.post('/post', Helper.checkLogin);
     app.post('/post', function (req, res) {
         var curUser = req.session.user,
-            post = new Post(curUser.name, req.body.title, req.body.post, req.body.summary);
+            post = new Post(curUser.name, req.body.title, req.body.post, req.body.tags, req.body.summary);
 
         post.save(function (err) {
             if (err) {

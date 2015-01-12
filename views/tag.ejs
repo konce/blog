@@ -1,0 +1,12 @@
+<%- include header %>
+<h2 class="tags--title">标签 <%- title %></h2>
+<% posts.forEach(function (post, index) { %>
+    <p class="info">
+        <%= post.time.day %>
+        <a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">
+            <%= post.title %>
+        </a>
+    </p>
+<% }) %>
+
+<%- include footer %>
