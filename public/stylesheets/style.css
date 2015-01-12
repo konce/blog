@@ -301,6 +301,27 @@ article a:hover{
         padding: 6em 4em;
     }
 }
+
+.tags--title {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.tag{
+    margin:3px;
+    padding:4px 8px;
+    border-radius:3px;
+    background-color:#f3f3f3;
+    color:#f14e42;
+    font-size:13px;
+    transition: background .2s ease-in;
+}
+.tag:hover{
+    text-decoration:none;
+    background-color:#f14e42;
+    color:#fff;
+    -webkit-transition:color .2s linear;
+}
 @media screen and (min-width: 0px) and (max-width: 740px) {
     #header {
         background-attachment: scroll;

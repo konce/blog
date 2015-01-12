@@ -11,6 +11,14 @@
     <blockquote>
         <%- post.summary %>
     </blockquote>
+    <% if (post.tags) { %>
+        标签:
+        <% post.tags.forEach(function (tag, index) { %>
+            <% if (tag) { %>
+                <a class="tag" href="/tags/<%= tag %>"><%= tag %></a>
+            <% } %>
+        <% })%>
+    <% } %>
     <hr >
 <% }) %>
 <%- include footer %>

@@ -1,0 +1,6 @@
+<%- include header %>
+<h2 class="tags--title">所有<%- title %></h2>
+<% posts.forEach(function (tag, index) { %>
+    <a class="tag" href="/tags/<%= tag %>"><%= tag %></a>
+<% }) %>
+<%- include footer %>

@@ -5,7 +5,11 @@
     <br />
     正文:<br />
     <textarea name="post" rows="20" cols="100"><%= post.post %></textarea>
-    <textarea name="summary" rows="20" cols="100"><%= post.summary %></textarea>
+    <textarea name="summary" rows="5" cols="100"><%= post.summary %></textarea>
+    标签：<br />
+    <textarea name="tags" rows="1" cols="100"><%= post.tags %></textarea>
+    使用英文字符`,`（逗号）进行分割
+    <br />
     <input type="submit" value="保存修改" />
 </form>
 <%- include footer %>
